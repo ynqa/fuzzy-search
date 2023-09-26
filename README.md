@@ -19,14 +19,11 @@ This technique prunes away choices that are guaranteed to be outside the desired
 For instance, consider the following code, which straightforwardly calculates the Levenshtein distance and returns strings within a maximum edit distance (`max_edits`):
 
 ```rust
-pub fn fuzzy_search<E>(
+pub fn fuzzy_search(
     query: &str,
     choices: &[String],
     max_edits: usize,
-) -> Vec<String>
-where
-    E: Fn(&str, &str) -> usize + Sync,
-{
+) -> Vec<String> {
     choices
         .iter()
         .filter(|choice| levenshtein(query, choice) <= max_edits)
