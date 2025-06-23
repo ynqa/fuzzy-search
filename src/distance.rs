@@ -8,9 +8,9 @@ fn min3<T: Ord>(v1: T, v2: T, v3: T) -> T {
 #[allow(clippy::needless_range_loop)]
 pub fn levenshtein(lhs: &str, rhs: &str) -> usize {
     let l_vec = lhs.chars().collect::<Vec<_>>();
-    let l_len = lhs.len();
+    let l_len = l_vec.len();
     let r_vec = rhs.chars().collect::<Vec<_>>();
-    let r_len = rhs.len();
+    let r_len = r_vec.len();
 
     if l_len == 0 {
         return r_len;
