@@ -1,4 +1,4 @@
-name: tests
+name: ci
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/registry
@@ -34,3 +34,7 @@ jobs:
         with:
           command: build
           args: --examples
+      - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --bins
